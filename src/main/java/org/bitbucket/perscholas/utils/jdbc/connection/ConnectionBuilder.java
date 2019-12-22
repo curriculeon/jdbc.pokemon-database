@@ -54,6 +54,15 @@ public class ConnectionBuilder implements ConnectionBuilderInterface {
     @Override
     public Connection build() {
         String errorMessage = "Failed to connect to `%s`";
+        String jdbcUrl = this.toString();
+
+        return ExceptionalSupplier.tryInvoke(
+                () -> DriverManager.getConnection(jdbcUrl, this.userName, this.userPass),
+                String.format(errorMessage, jdbcUrl));
+    }
+
+    @Override
+    public String toString() {
         Boolean isHostNull = this.hostName == null;
         Boolean isPortNull = portNumber == null;
         Boolean hasPortBeenSet = !isPortNull && !Integer.valueOf(3306).equals(portNumber);
@@ -69,9 +78,6 @@ public class ConnectionBuilder implements ConnectionBuilderInterface {
                 .append("/")
                 .nonNullAppend(databaseName)
                 .toString();
-
-        return ExceptionalSupplier.tryInvoke(
-                () -> DriverManager.getConnection(jdbcUrl, this.userName, this.userPass),
-                String.format(errorMessage, jdbcUrl));
+        return jdbcUrl;
     }
 }

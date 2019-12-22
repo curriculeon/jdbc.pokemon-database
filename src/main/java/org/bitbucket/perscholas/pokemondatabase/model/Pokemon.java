@@ -1,9 +1,5 @@
 package org.bitbucket.perscholas.pokemondatabase.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
 /**
  * A entity is an entity which
  */

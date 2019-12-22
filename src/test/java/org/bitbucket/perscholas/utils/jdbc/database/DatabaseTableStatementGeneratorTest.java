@@ -7,6 +7,6 @@ import org.junit.Test;
 public class DatabaseTableStatementGeneratorTest {
     @Test
     public void test1() {
-        System.out.println(new DatabaseTableStatementGenerator(Database.UAT, Pokemon.class).getCreateStatement());
+        System.out.println(new DatabaseTableStatementGenerator<>(Database.UAT, Pokemon.class).getCreateStatement());
     }
 }

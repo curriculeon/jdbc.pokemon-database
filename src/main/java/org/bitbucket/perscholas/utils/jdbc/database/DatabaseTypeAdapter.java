@@ -1,5 +1,7 @@
 package org.bitbucket.perscholas.utils.jdbc.database;
 
+import com.github.git_leon.StringUtils;
+
 import java.util.Arrays;
 import java.util.List;
 
